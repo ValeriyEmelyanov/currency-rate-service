@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 
-@FeignClient(name = "currencyrate", url = "${cb.currencyrate.url}")
+@FeignClient(name = "currencyrate",
+        url = "${cb.currencyrate.url}",
+        configuration = FeignConfig.class)
 public interface CbClient {
 
     @GetMapping

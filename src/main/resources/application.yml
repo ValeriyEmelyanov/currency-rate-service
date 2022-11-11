@@ -5,6 +5,10 @@ spring:
   main:
     banner-mode: off
 
+logging:
+  level:
+    com.example.currencyrateservice.dataclient: debug
+
 cb:
   currencyrate:
     url: https://www.cbr.ru/scripts/XML_daily.asp
