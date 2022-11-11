@@ -1,0 +1,10 @@
+server:
+  port: 8081
+
+spring:
+  main:
+    banner-mode: off
+
+cb:
+  currencyrate:
+    url: https://www.cbr.ru/scripts/XML_daily.asp
