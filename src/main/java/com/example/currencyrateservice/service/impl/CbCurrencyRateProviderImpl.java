@@ -6,6 +6,7 @@ import com.example.currencyrateservice.parser.CurrencyRateParser;
 import com.example.currencyrateservice.service.CurrencyRateProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class CbCurrencyRateProviderImpl implements CurrencyRateProvider {
     private final CurrencyRateParser parser;
 
     @Override
+    @Cacheable(value = "ondate")
     public Map<String, CurrencyRateResponse> getCurrencyRatesOnDate(LocalDate date) {
         log.info("Getting currency rates plan on date {}", date);
         String xml = cbClient.getCurrencyRatesOnDate(date);
@@ -31,6 +33,7 @@ public class CbCurrencyRateProviderImpl implements CurrencyRateProvider {
     }
 
     @Override
+    @Cacheable(value = "plan")
     public Map<String, CurrencyRateResponse> getCurrencyRatesPlan() {
         log.info("Getting currency rates plan");
         String xml = cbClient.getCurrencyRatesPlan();
