@@ -4,6 +4,9 @@ server:
 spring:
   main:
     banner-mode: off
+  cache:
+    caffeine:
+      spec: maximumSize=48,expireAfterAccess=600s
 
 logging:
   level:
