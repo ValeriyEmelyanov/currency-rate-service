@@ -29,7 +29,7 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
     }
 
     @Override
-    public CurrencyRateResponse getCurrencyRateByCharCodeOnDate(CurrencyRateOnDateByCharCodeRequest request) {
+    public CurrencyRateResponse getCurrencyRateOnDateByCharCode(CurrencyRateOnDateByCharCodeRequest request) {
         return currencyRateServise.getCurrencyRatesOnDate(request.getDate())
                 .get(request.getCharCode());
     }
@@ -44,7 +44,7 @@ public class CurrencyRateServiceImpl implements CurrencyRateService {
     }
 
     @Override
-    public CurrencyRateResponse getCurrencyRateByCharCodePlan(CurrencyRatePlanByCharCodeRequest request) {
+    public CurrencyRateResponse getCurrencyRatePlanByCharCode(CurrencyRatePlanByCharCodeRequest request) {
         return currencyRateServise.getCurrencyRatesPlan()
                 .get(request.getCharCode());
     }

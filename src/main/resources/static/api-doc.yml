@@ -1,0 +1,144 @@
+openapi: '3.0.3'
+info:
+  title: Currency Rate Service
+  version: 1.0.0
+servers:
+  - url: http://localhost:8081
+tags:
+  - name: currencyrates
+    description: Курсы валют
+
+paths:
+  /currencyrates/ondate:
+    post:
+      summary: Курсы валют на дату
+      operationId: getCurrencyRatesOnDate
+      tags:
+        - currencyrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyRateOnDateRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CurrencyRateResponse'
+  /currencyrates/ondate/bycharcode:
+    post:
+      summary: Курс валюты по символьному коду на дату
+      operationId: getCurrencyRateOnDateByCharCode
+      tags:
+        - currencyrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyRateOnDateByCharCodeRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyRateResponse'
+  /currencyrates/plan:
+    post:
+      summary: Курсы валют на завтра
+      operationId: getCurrencyRatesPlan
+      tags:
+        - currencyrates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CurrencyRateResponse'
+  /currencyrates/plan/bycharcode:
+    post:
+      summary: Курс валюты по символьному на завтра
+      operationId: getCurrencyRatePlanByCharCode
+      tags:
+        - currencyrates
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CurrencyRatePlanByCharCodeRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrencyRateResponse'
+
+
+components:
+  schemas:
+    CurrencyRateOnDateRequest:
+      type: object
+      description: Запрос на получение курса валют на дату
+      properties:
+        date:
+          type: string
+          format: date
+          description: Дата курса валют
+          example: 2022-09-22
+    CurrencyRateOnDateByCharCodeRequest:
+      type: object
+      description: Запрос на получение курса валюты по символьному коду на дату
+      properties:
+        date:
+          type: string
+          format: date
+          description: Дата курса валют
+          example: 2022-09-22
+        charCode:
+          type: string
+          description: Символьный код валюты
+          example: USD
+    CurrencyRatePlanByCharCodeRequest:
+      type: object
+      description: Запрос на получение курса валюты по символьному коду на завтра
+      properties:
+        charCode:
+          type: string
+          description: Символьный код валюты
+          example: USD
+    CurrencyRateResponse:
+      type: object
+      description: Курс валюты
+      properties:
+        id:
+          type: string
+          description: Идентификатор
+          example: R01235
+        numCode:
+          type: string
+          description: Цифровой код валюты
+          example: 840
+        charCode:
+          type: string
+          description: Символьный код валюты
+          example: USD
+        nominal:
+          type: integer
+          description: Номинал
+          example: 1
+        name:
+          type: string
+          description: Наименование валюты
+          example: Доллар США
+        value:
+          type: number
+          description: Курс
+          example: 60,8685

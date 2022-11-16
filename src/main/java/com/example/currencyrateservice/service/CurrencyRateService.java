@@ -10,9 +10,9 @@ import java.util.List;
 public interface CurrencyRateService {
     List<CurrencyRateResponse> getCurrencyRatesOnDate(CurrencyRateOnDateRequest request);
 
-    CurrencyRateResponse getCurrencyRateByCharCodeOnDate(CurrencyRateOnDateByCharCodeRequest request);
+    CurrencyRateResponse getCurrencyRateOnDateByCharCode(CurrencyRateOnDateByCharCodeRequest request);
 
     List<CurrencyRateResponse> getCurrencyRatesPlan();
 
-    CurrencyRateResponse getCurrencyRateByCharCodePlan(CurrencyRatePlanByCharCodeRequest request);
+    CurrencyRateResponse getCurrencyRatePlanByCharCode(CurrencyRatePlanByCharCodeRequest request);
 }

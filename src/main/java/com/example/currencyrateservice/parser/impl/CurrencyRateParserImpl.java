@@ -23,7 +23,7 @@ import java.util.List;
 public class CurrencyRateParserImpl implements CurrencyRateParser {
     @Override
     public List<CurrencyRateResponse> parse(String ratesAsString) {
-        var rates = new ArrayList<CurrencyRateResponse>();
+        ArrayList<CurrencyRateResponse> rates = new ArrayList<>();
 
         var factory = DocumentBuilderFactory.newDefaultInstance();
         factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");

@@ -15,3 +15,7 @@ logging:
 cb:
   currencyrate:
     url: https://www.cbr.ru/scripts/XML_daily.asp
+
+springdoc:
+  swagger-ui:
+    url: /api-doc.yml
