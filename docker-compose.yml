@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    image: currency-rate-service
+    command: java -jar ./app.jar
+    environment:
+      - PORT=8081
+    ports:
+      - "8081:8081"
+    container_name: currency-rate-service
